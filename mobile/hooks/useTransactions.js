@@ -1,11 +1,9 @@
 import { useState , useCallback} from "react" ; 
 import { Alert } from "react-native" ; 
-import URL  from "../constants/urls.js"
+import API_URL  from "../constants/urls.js"
 
 // NOTE : useCallback() , doesnt reload the function every single time app refreshes 
 // only when neceesary , watch a yt vid if you are confused again 
-const API_URL = URL ; 
-console.log(API_URL)
 
 const useTransactions = (userId) => {
   const [transactions,setTransactions] = useState([]) ;

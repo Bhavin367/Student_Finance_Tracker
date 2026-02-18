@@ -24,40 +24,34 @@ export async function createCategory(req,res) {
 
 export async function getCategoriesByUserId(req,res) {
   try {
-      const { userId } = req.params ;
-      const { catType }   = req.body ; 
-      const category = await sql`
-      SELECT
-        category_id AS id ,
-        category_name AS Name 
-      FROM categories 
-      WHERE 
-        user_id = ${userId}
-      AND 
-        type = ${catType}
-  `;
-    const test = sql`
-SELECT * from categories 
+    const { userId , typeName }  = req.params ; 
+
+    const getCategory = await sql`
+    SELECT 
+      category_id as id , 
+      category_name as name  
+    FROM 
+      categories 
+    WHERE 
+      user_id = ${userId}
+    AND 
+      type = ${typeName}
 `;
-
-    console.log("testdata")    
-    console.log(test) ; 
-       
-      console.log(category) ;  
-      return res.status(200).json(category); 
-
+    console.log(getCategory) ; 
+    return res.status(200).json(getCategory) ; 
 
   } catch (error) {
-      console.log("Error getting categories : ",error ) ; 
-      return res.status(500).json({ message : "Internal server error"}) ; 
+    console.log("Error while fetching categories ; server error : " , error) ;
+    return res.status(500).json({message : "Internal server error"}) ; 
   }
 }
 
 export async function deleteCategory(req,res) {
   try {
-    const { userId , categoryId } = req.body ;
 
-    categoryId = Number(categoryId) ; 
+    const { userId } = req.body ; 
+
+    const categoryId = Number(req.body.categoryId) ; 
 
     if (!userId || isNaN(categoryId)){
       return res.status(400).json({message : "Incomplete or wrong data "}) ; 

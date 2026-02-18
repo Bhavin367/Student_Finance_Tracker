@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post("/:userId",createCategory) ;
 
-router.post("/list/:userId",getCategoriesByUserId) ; 
+router.get("/:userId/type/:typeName",getCategoriesByUserId);
 
 // user id and category id comes from body in this case 
 router.delete("/",deleteCategory) ;
