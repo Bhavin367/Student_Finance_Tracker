@@ -21,6 +21,7 @@ app.get('/', (req,res) =>{
   res.send("YO someone there ") ; 
 })
 
+
 app.use("/api/transactions",transactionRoute) ; 
 app.use("/api/categories",categoryRoute) ; 
 
