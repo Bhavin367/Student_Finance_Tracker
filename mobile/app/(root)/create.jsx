@@ -2,6 +2,7 @@ import { View, Text ,TextInput,StyleSheet, TouchableOpacity} from 'react-native'
 import { COLORS } from "../../constants/colors.js"
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from "expo-router" ; 
+import TransactionInput from '../../components/TransactionInput.jsx'
 
 const Create = () => {
   const router = useRouter() ; 
@@ -22,11 +23,7 @@ const Create = () => {
       </View>
 
       {/* input point for title and amount  */}
-      {/* TO-DO rest of the page   */}
-      <View style = {styles.inputContainer}>
-        <Text>Title</Text>
-        <TextInput/>
-      </View>
+      <TransactionInput/>
     
     </View>
   )
